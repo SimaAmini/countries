@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-x
+
 export default function Home() {
   return (
     <>

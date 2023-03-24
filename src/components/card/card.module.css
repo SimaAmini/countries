@@ -1,8 +1,9 @@
 .card {
   border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
+  background: var(--white);
   border: 1px solid rgba(var(--card-border-rgb), 0);
   transition: background 200ms, border 200ms;
+  box-shadow: 0px 0px 10px 2px hsla(0, 0%, 50%, 0.309);
 }
 
 .card span {
@@ -44,16 +45,24 @@
     margin-bottom: 0.5rem;
   }
 }
+
+.flagContainer {
+  width: 100%;
+  position: relative;
+
+  background-clip: content-box;
+
+  aspect-ratio: 4 / 3;
+}
 .flag {
   width: 100%;
   position: relative;
-  background: url() 50% 50% no-repeat;
   background-size: cover;
   background-clip: content-box;
   border-top-right-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
 
-  /* aspect-ratio: auto 4 / 3; */
+  /* aspect-ratio: 4 / 3; */
 }
 
 .flag:before {

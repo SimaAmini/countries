@@ -1,32 +1,40 @@
 import styles from './card.module.css'
+import Image from 'next/image'
+import Link from 'next/link'
 
-export const Card = () => {
+export const Card = (props) => {
+  const { name, capital, population, region, flag, flagAlt } = props
   return (
-    <a
-      href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+    <Link
+      href={`country/[slug]`}
       className={styles.card}
-      target="_blank"
-      rel="noopener noreferrer"
+      as={`country/${name}`}
     >
-      <div
-        className={styles.flag}
-        style={{ backgroundImage: "url('http://placehold.it/800x600')" }}
-      />
+      <div className={styles.flagContainer}>
+        <Image
+          className={styles.flag}
+          fill
+          src={flag}
+          alt={flagAlt}
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUMq2sBwACggFJ59+4jwAAAABJRU5ErkJggg=="
+          placeholder="blur"
+        />
+      </div>
       <div className={styles.info}>
-        <h3>Germany</h3>
+        <h3>{name}</h3>
         <div className={styles.basicInfo}>
           <label>Population:</label>
-          <p>4854545454</p>
+          <p>{population}</p>
         </div>
         <div className={styles.basicInfo}>
           <label>Region:</label>
-          <p>Europe</p>
+          <p>{region}</p>
         </div>
         <div className={styles.basicInfo}>
           <label>Capital:</label>
-          <p>4854545454</p>
+          <p>{capital}</p>
         </div>
       </div>
-    </a>
+    </Link>
   )
 }

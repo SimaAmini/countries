@@ -1,11 +1,12 @@
-import styles from './list.module.css'
 import Head from 'next/head'
-import { Header } from '@components/header'
+
+import styles from './list.module.css'
 import { Search } from '@components/search/search'
 import { Filter } from '@components/filter/filter'
 import { Card } from '@components/card/card'
+import { mapCountries } from '../mappers/mapper'
 
-export default function List() {
+function List({ countries }) {
   return (
     <>
       <Head>
@@ -14,20 +15,34 @@ export default function List() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <Header />
-        <content className={styles.content}>
+      <div className={styles.main}>
+        <div className={styles.content}>
           <div className={styles.controls}>
             <Search />
             <Filter />
           </div>
           <div className={styles.grid}>
-            <Card />
+            {(countries || []).map((country) => (
+              <Card {...country} key={country.fifa} />
+            ))}
             <Card />
             <Card />
           </div>
-        </content>
-      </main>
+        </div>
+      </div>
     </>
   )
 }
+
+export async function getStaticProps() {
+  const res = await fetch('https://restcountries.com/v3.1/all')
+  const countries = await res.json()
+
+  return {
+    props: {
+      countries: mapCountries(countries),
+    },
+  }
+}
+
+export default List
