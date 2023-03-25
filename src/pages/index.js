@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { Search } from '@components/search/search'
 import { Filter } from '@components/filter/filter'
 import { Card } from '@components/card/card'
-import { mapCountries } from '../mappers/mapper'
+import { mapCountries } from '@mappers/map-countries'
 
 import styles from './list.module.css'
 

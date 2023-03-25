@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-import { useDebounce } from '../../hooks/use-debounce'
+import { useDebounce } from '@hooks/use-debounce'
 
 import styles from './search.module.css'
 

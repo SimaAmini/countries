@@ -41,12 +41,10 @@
 .flag {
   width: 100%;
   position: relative;
-  /* background: url() 50% 50% no-repeat; */
   background-size: cover;
   background-clip: content-box;
   border-top-right-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
-
   aspect-ratio: auto 4 / 3;
   box-shadow: 0px 1px 10px 2px hsla(0, 0%, 50%, 0.309);
 }
