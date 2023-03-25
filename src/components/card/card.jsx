@@ -1,6 +1,7 @@
-import styles from './card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import styles from './card.module.css'
 
 export const Card = (props) => {
   const { name, capital, population, region, flag, flagAlt } = props

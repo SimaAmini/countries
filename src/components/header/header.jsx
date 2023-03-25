@@ -1,7 +1,9 @@
-import { Button } from '@components/button'
-import styles from './header.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon } from '@fortawesome/free-solid-svg-icons/faMoon'
+
+import { Button } from '@components/button'
+
+import styles from './header.module.css'
 
 export const Header = () => {
   return (

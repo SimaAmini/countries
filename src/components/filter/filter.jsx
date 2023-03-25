@@ -1,10 +1,12 @@
+import { useCallback } from 'react'
+
 import styles from './filter.module.css'
-export const Filter = () => {
+
+export const Filter = ({ onFilter }) => {
+  const handleChange = useCallback((event) => onFilter(event.target.value), [])
+
   return (
-    <select className={styles.select}>
-      {/* <option hidden selected>
-        Filter by Region
-      </option> */}
+    <select className={styles.select} onChange={handleChange}>
       <option value="" selected>
         All Regions
       </option>

@@ -1,10 +1,13 @@
-import { Button } from '@components/button'
-import { mapCountry } from '../../mappers/map-country'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styles from './country.module.css'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
+import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
+
+import { Button } from '@components/button'
+import { mapCountry } from '@mappers/map-country'
+
+import styles from './country.module.css'
 
 const Country = ({ country }) => {
   const router = useRouter()
@@ -24,7 +27,7 @@ const Country = ({ country }) => {
 
   if (country)
     return (
-      <>
+      <div className={styles.detail}>
         <div className={styles.controls}>
           <Button onClick={goBack} withShadow>
             <FontAwesomeIcon icon={faArrowLeft} />
@@ -53,18 +56,20 @@ const Country = ({ country }) => {
             <div className={styles.borders}>
               <label className={styles.label}>Border Countries: </label>
               {(country?.borderCountries || []).map((borderCountry) => (
-                <Button
-                  withShadow
-                  className={styles.borderCountry}
+                <Link
+                  href={`[slug]`}
+                  as={`${borderCountry}`}
                   key={borderCountry}
                 >
-                  {borderCountry}
-                </Button>
+                  <Button withShadow className={styles.borderCountry}>
+                    {borderCountry}
+                  </Button>
+                </Link>
               ))}
             </div>
           </div>
         </div>
-      </>
+      </div>
     )
 }
 
@@ -74,11 +79,18 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params
-  const res = await fetch(`https://restcountries.com/v3.1/name/${slug}`)
-  const country = await res.json()
+
+  const country = await fetch(`https://restcountries.com/v3.1/name/${slug}`)
+    .then((response) => response.json())
+    .catch((error) => console.log(error))
+
+  const countries = await fetch('https://restcountries.com/v3.1/all')
+    .then((response) => response.json())
+    .catch((error) => console.log(error))
+
   return {
     props: {
-      country: mapCountry(country),
+      country: mapCountry(country, countries),
     },
   }
 }

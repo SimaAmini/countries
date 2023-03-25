@@ -1,5 +1,5 @@
-export const mapCountries = (countries) =>
-  countries.map((country) => ({
+export const mapCountries = (countries) => {
+  return (countries || []).map((country) => ({
     name: country?.name?.common,
     capital: (country?.capital && country?.capital[0]) || null,
     population: country?.population,
@@ -7,3 +7,4 @@ export const mapCountries = (countries) =>
     flag: country?.flags.svg,
     flagAlt: country?.flags?.alt || null,
   }))
+}

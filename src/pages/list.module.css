@@ -1,10 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
-  /* padding-left: 6rem;
-  padding-right: 6rem; */
   min-height: 100vh;
 }
 .content {
@@ -33,11 +30,12 @@
 
 /* Mobile */
 @media (max-width: 700px) {
+  .main {
+    width: 100%;
+  }
   .grid {
     grid-template-columns: 1fr;
     margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
   }
   .controls {
     flex-direction: column;
