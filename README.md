@@ -11,4 +11,5 @@ I have created a simple app using next.js and [countries api](https://restcountr
 - [ ] Dark mode
 - [ ] Unit tests
 - [ ] Store the filters in the URL query strings
+- [ ] Improve font-weight
 - [ ] Improve performance
